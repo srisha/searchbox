@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Active Directory search</title>
+
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
+</head>
+
+<body>
+
+<div id="page">
+
+
+    
+    <form id="searchForm" method="post">
+       <h2 style="text-align: center;padding:3px;";>Enter Title here</h2>
+		<fieldset>
+        
+           	<input id="username" type="text" placeholder="Username" />
+            
+            <input type="submit" value="Submit" id="search" />      
+           
+            
+        </fieldset>
+    </form>
+
+    <div id="resultsDiv"></div>
+    
+</div>
+   <p1></p1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("search").click(function(){
+        var vname = $("#username").val();
+       $.post("search.php", //Required URL of the page on server
+        { // Data Sending With Request To Server
+        name:vname,
+        
+        },
+        function(response,status){ // Required Callback Function
+        alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status);//"response" receives - whatever written in echo of above PHP script.
+        $("#form")[0].reset();
+            });
+});
+});
+
+</script>
+</body>
+</html>
